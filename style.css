@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
+
+:root {
+    --bg-earth: #f4f1ea;     /* Warm Paper/Sand */
+    --text-forest: #2f3e30;  /* Dark Green text */
+    --leaf-green: #606c38;   /* Sage/Olive */
+    --clay-accent: #bc6c25;  /* Terracotta */
+    --card-white: #ffffff;
+    --soft-shadow: 0 10px 30px rgba(47, 62, 48, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg-earth);
+    color: var(--text-forest);
+    font-family: 'Montserrat', sans-serif; /* Clean body text */
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    
+    /* Subtle Grain Texture Overlay */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif; /* Elegant headings */
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+h1 { font-size: 3.5rem; color: var(--text-forest); }
+.highlight { color: var(--leaf-green); font-style: italic; }
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+/* --- NAVIGATION --- */
+nav {
+    padding: 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1200px; margin: 0 auto; width: 100%;
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.nav-links { display: flex; gap: 2.5rem; }
+
+.nav-link {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-forest);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '🌿'; /* Leaf emoji as indicator */
+    position: absolute; top: -15px; left: 50%; transform: translateX(-50%) scale(0);
+    transition: 0.3s; font-size: 0.8rem;
+}
+.nav-link:hover::after, .nav-link.active::after { transform: translateX(-50%) scale(1); }
+
+/* --- LAYOUT --- */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+    flex-grow: 1;
+}
+
+/* --- BUTTONS (Organic Shapes) --- */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px 50px 50px 0; /* Leaf/Petal Shape */
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--text-forest);
+    color: var(--bg-earth);
+}
+.btn-primary:hover {
+    background-color: var(--leaf-green);
+    border-radius: 50px 50px 0 50px; /* Shape shift on hover */
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 1px solid var(--text-forest);
+    color: var(--text-forest);
+    border-radius: 50px;
+}
+.btn-outline:hover {
+    background: var(--text-forest);
+    color: var(--bg-earth);
+}
+
+/* --- CARDS (Soft & Natural) --- */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+
+.card {
+    background: var(--card-white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: var(--soft-shadow);
+    transition: 0.4s ease;
+    border-bottom: 3px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-bottom-color: var(--leaf-green);
+}
+
+.tag {
+    display: inline-block;
+    background: #e9edc9; /* Light Green */
+    color: var(--text-forest);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-right: 5px; margin-top: 10px;
+}
+
+/* --- IMAGE FRAME --- */
+.organic-img {
+    width: 300px; height: 350px;
+    object-fit: cover;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; /* Blob shape */
+    box-shadow: var(--soft-shadow);
+    transition: 0.5s;
+}
+.organic-img:hover {
+    border-radius: 50%; 
+}
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Simplified for code brevity */
+    h1 { font-size: 2.5rem; }
+    .hero-layout { flex-direction: column-reverse; text-align: center; }
+}
