@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rishab Kumar</title>
+    <title>Rishab Kumar | Data Science Student</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav>
         <div class="logo">Rishab Kumar.</div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
         <div class="nav-links">
             <a href="index.html" class="nav-link active">Home</a>
             <a href="projects.html" class="nav-link">Projects</a>
@@ -18,17 +19,19 @@
         </div>
     </nav>
 
-    <div class="container hero-layout" style="display: flex; align-items: center; justify-content: space-between; min-height: 70vh;">
+    <div class="container hero-layout hidden" style="display: flex; align-items: center; justify-content: space-between; min-height: 70vh;">
         
         <div style="max-width: 500px;">
-            <p style="color: var(--clay-accent); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem;">Data Science Explorer</p>
+            <p style="color: var(--clay-accent); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem;">Data Science Student</p>
             <h1>Cultivating Insights <br>from <span class="highlight">Complex Data</span></h1>
             
             <p style="margin: 2rem 0; font-size: 1.1rem; color: #555;">
-                I am a student at <strong>IIT Madras</strong> online BS degree, blending technical precision with organic problem-solving. I can help organizations grow by rooting their decisions in data.
+                I am a student at <strong>IIT Madras</strong>, blending technical precision with problem-solving.
+                <br>
+                I have successfully acquired the <strong>Diploma in Programming & Data Science</strong> and currently seeking an <strong>Internship</strong>.
             </p>
 
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
                 <a href="projects.html" class="btn btn-primary">Explore My Work</a>
                 <a href="resume.pdf" target="_blank" class="btn btn-outline">Resume (PDF)</a>
             </div>
@@ -39,6 +42,26 @@
         </div>
 
     </div>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
 
 </body>
 </html>
